@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Text} from 'ink';
-import {Panel} from './types.js';
+import {Panel} from '../common/types.js';
 
 type HelpBarProps = {
 	compact: boolean;

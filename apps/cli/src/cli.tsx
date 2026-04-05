@@ -14,7 +14,7 @@ meow(
 	},
 );
 
-// Enter alternate screen buffer + hide cursor (like vim/nano)
+// Enter alternate screen buffer + hide cursor
 process.stdout.write('\x1B[?1049h');
 process.stdout.write('\x1B[?25l');
 

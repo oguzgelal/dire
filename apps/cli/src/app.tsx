@@ -1,9 +1,9 @@
 import React, {useState, useMemo} from 'react';
 import {Box, Text, useInput, useApp, useStdout} from 'ink';
-import {channels, COMPACT_BREAKPOINT, threads} from './consts.js';
-import {Sidebar} from './sidebar.js';
-import {HelpBar} from './help-bar.js';
-import {Panel} from './types.js';
+import {channels, COMPACT_BREAKPOINT, threads} from './common/consts.js';
+import {Sidebar} from './modules/sidebar.js';
+import {HelpBar} from './components/help-bar.js';
+import {Panel} from './common/types.js';
 
 type ThreadListProps = {
 	channelName: string;

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box, Text} from 'ink';
-import {channels} from './consts.js';
-
+import {channels} from '../common/consts.js';
 type SidebarProps = {
 	selectedIndex: number;
 	active: boolean;
