@@ -1,17 +1,19 @@
 import React from 'react';
 import {Box, Text} from 'ink';
-import {channels} from '../common/consts.js';
-type SidebarProps = {
-	selectedIndex: number;
-	active: boolean;
-	compact: boolean;
-};
+import {SIDEBAR_WIDTH} from '../common/consts.js';
+import {useDire} from '../hooks/useDire.js';
+import {useIsCompact} from '../hooks/useIsCompact.js';
 
-export function Sidebar({selectedIndex, active, compact}: SidebarProps) {
+export function Sidebar() {
+	const compact = useIsCompact();
+	const {channels, activePanel, selectionChannelIndex} = useDire();
+
+	const active = activePanel === 'sidebar';
+
 	return (
 		<Box
 			flexDirection="column"
-			width={compact ? '100%' : 24}
+			width={compact ? '100%' : SIDEBAR_WIDTH}
 			flexGrow={compact ? 1 : 0}
 			borderStyle="single"
 			borderColor={active ? 'cyan' : 'gray'}
@@ -23,7 +25,7 @@ export function Sidebar({selectedIndex, active, compact}: SidebarProps) {
 				</Text>
 			</Box>
 			{channels.map((channel, index) => {
-				const isSelected = index === selectedIndex;
+				const isSelected = index === selectionChannelIndex;
 				const hasUnread = channel.unread > 0;
 
 				return (
@@ -42,7 +44,7 @@ export function Sidebar({selectedIndex, active, compact}: SidebarProps) {
 							bold={isSelected || hasUnread}
 							inverse={isSelected && active}
 						>
-							# {channel.name}
+							#{channel.name}
 						</Text>
 						{hasUnread && (
 							<Text color="green" bold>

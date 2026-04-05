@@ -16,9 +16,12 @@
 		"dist"
 	],
 	"dependencies": {
+		"@redux-devtools/extension": "^4.0.0",
+		"conf": "^15.1.0",
 		"ink": "^4.1.0",
 		"meow": "^11.0.0",
-		"react": "^18.2.0"
+		"react": "^18.2.0",
+		"zustand": "^5.0.12"
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^3.0.1",
