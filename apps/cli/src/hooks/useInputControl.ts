@@ -20,12 +20,12 @@ export function useInputControl() {
 		}
 
 		if (key.leftArrow) {
-			activePanelSet('sidebar');
+			activePanelSet('channels');
 			return;
 		}
 
 		if (key.rightArrow) {
-			if (activePanel === 'sidebar') {
+			if (activePanel === 'channels') {
 				activePanelSet('threads');
 				selectionThreadIndexSet(0);
 				return;
@@ -33,7 +33,7 @@ export function useInputControl() {
 		}
 
 		if (key.return) {
-			if (activePanel === 'sidebar') {
+			if (activePanel === 'channels') {
 				activePanelSet('threads');
 				selectionThreadIndexSet(0);
 				return;
@@ -41,7 +41,7 @@ export function useInputControl() {
 		}
 
 		if (key.upArrow) {
-			if (activePanel === 'sidebar') {
+			if (activePanel === 'channels') {
 				selectionChannelIndexSet(Math.max(0, selectionChannelIndex - 1));
 			} else {
 				selectionThreadIndexSet(Math.max(0, selectionThreadIndex - 1));
@@ -51,7 +51,7 @@ export function useInputControl() {
 		}
 
 		if (key.downArrow) {
-			if (activePanel === 'sidebar') {
+			if (activePanel === 'channels') {
 				selectionChannelIndexSet(selectionThreadIndex + 1);
 			} else {
 				selectionThreadIndexSet(selectionThreadIndex + 1);

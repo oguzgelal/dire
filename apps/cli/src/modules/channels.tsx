@@ -1,19 +1,19 @@
 import React from 'react';
 import {Box, Text} from 'ink';
-import {SIDEBAR_WIDTH} from '../common/consts.js';
+import {CHANNELS_WIDTH} from '../common/consts.js';
 import {useDire} from '../hooks/useDire.js';
 import {useIsCompact} from '../hooks/useIsCompact.js';
 
-export function Sidebar() {
+export function Channels() {
 	const compact = useIsCompact();
 	const {channels, activePanel, selectionChannelIndex} = useDire();
 
-	const active = activePanel === 'sidebar';
+	const active = activePanel === 'channels';
 
 	return (
 		<Box
 			flexDirection="column"
-			width={compact ? '100%' : SIDEBAR_WIDTH}
+			width={compact ? '100%' : CHANNELS_WIDTH}
 			flexGrow={compact ? 1 : 0}
 			borderStyle="single"
 			borderColor={active ? 'cyan' : 'gray'}

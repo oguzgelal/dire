@@ -33,14 +33,6 @@ export function BarBottom() {
 				</>
 			)}
 
-			{/* commands */}
-			<Text color="gray">
-				<Text bold color="white">
-					[c]
-				</Text>{' '}
-				commands
-			</Text>
-
 			{/* quit */}
 			<Text color="gray">
 				<Text bold color="white">

@@ -2,7 +2,7 @@ import React from 'react';
 import {Box, Text} from 'ink';
 import {useDire} from '../hooks/useDire.js';
 
-export function ThreadList() {
+export function Threads() {
 	const {threads, activePanel, selectionThreadIndex} = useDire();
 
 	const active = activePanel === 'threads';

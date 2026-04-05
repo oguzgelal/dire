@@ -3,7 +3,7 @@ import {devtools, persist, type StorageValue} from 'zustand/middleware';
 import Conf from 'conf';
 import type {} from '@redux-devtools/extension'; // required for devtools typing
 
-type Panel = 'sidebar' | 'threads';
+type Panel = 'channels' | 'threads';
 
 type Channel = {
 	name: string;
@@ -44,7 +44,7 @@ export const useDire = create<DireState>()(
 				selectionThreadIndexSet: selectionThreadIndex => set({selectionThreadIndex}), // prettier-ignore
 				selectionChannelIndex: 0,
 				selectionChannelIndexSet: selectionChannelIndex => set({selectionChannelIndex}), // prettier-ignore
-				activePanel: 'sidebar',
+				activePanel: 'channels',
 				activePanelSet: panel => set({activePanel: panel}),
 				channels: [
 					{name: 'general', unread: 3},
