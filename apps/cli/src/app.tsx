@@ -7,8 +7,10 @@ import {ThreadList} from './components/thread-list.js';
 import {useIsCompact} from './hooks/useIsCompact.js';
 import {useDimensions} from './hooks/useDimensions.js';
 import {useDire} from './hooks/useDire.js';
+import {useInputControl} from './hooks/useInputControl.js';
 
 export default function App() {
+	useInputControl();
 	const compact = useIsCompact();
 
 	const {activePanel} = useDire();

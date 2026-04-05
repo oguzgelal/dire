@@ -1,30 +1,7 @@
 import {create} from 'zustand';
-import {
-	devtools,
-	persist,
-	type PersistStorage,
-	type StorageValue,
-} from 'zustand/middleware';
+import {devtools, persist, type StorageValue} from 'zustand/middleware';
 import Conf from 'conf';
 import type {} from '@redux-devtools/extension'; // required for devtools typing
-
-type PersistedDireState = Pick<DireState, 'channels'>;
-
-const conf = new Conf<Record<string, StorageValue<PersistedDireState>>>({
-	projectName: 'dire',
-});
-
-const confStorage: PersistStorage<PersistedDireState> = {
-	getItem(name: string) {
-		return (conf.get(name) as StorageValue<PersistedDireState>) ?? null;
-	},
-	setItem(name: string, value: StorageValue<PersistedDireState>) {
-		conf.set(name, value);
-	},
-	removeItem(name: string) {
-		conf.delete(name);
-	},
-};
 
 type Panel = 'sidebar' | 'threads';
 
@@ -41,6 +18,12 @@ type Thread = {
 	replies: number;
 	time: string;
 };
+
+type PersistedDireState = Pick<DireState, 'channels'>;
+
+const conf = new Conf<Record<string, StorageValue<PersistedDireState>>>({
+	projectName: 'dire',
+});
 
 interface DireState {
 	selectionThreadIndex: number;
@@ -148,8 +131,18 @@ export const useDire = create<DireState>()(
 			}),
 			{
 				name: 'dire-storage',
-				storage: confStorage,
 				partialize: state => ({channels: state.channels}),
+				storage: {
+					getItem(name: string) {
+						return (conf.get(name) as StorageValue<PersistedDireState>) ?? null;
+					},
+					setItem(name: string, value: StorageValue<PersistedDireState>) {
+						conf.set(name, value);
+					},
+					removeItem(name: string) {
+						conf.delete(name);
+					},
+				},
 			},
 		),
 	),
