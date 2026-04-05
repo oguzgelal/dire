@@ -6,7 +6,13 @@ export function BarBottom() {
 	const compact = useIsCompact();
 
 	return (
-		<Box paddingX={1} gap={2} alignItems="center" justifyContent="center">
+		<Box
+			flexShrink={0}
+			paddingX={1}
+			gap={2}
+			alignItems="center"
+			justifyContent="center"
+		>
 			{/* navigate */}
 			<Text color="gray">
 				<Text bold color="white">

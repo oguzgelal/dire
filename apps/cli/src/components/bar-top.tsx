@@ -4,7 +4,7 @@ import {CHANNELS_WIDTH} from '../common/consts.js';
 
 export function BarTop() {
 	return (
-		<Box width={'100%'} paddingX={1}>
+		<Box flexShrink={0} width={'100%'} paddingX={1}>
 			{/* logo */}
 			<Box width={CHANNELS_WIDTH} flexShrink={0}>
 				<Text color={'cyan'} bold>

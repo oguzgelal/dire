@@ -8,6 +8,7 @@ export function Guide() {
 
 	return (
 		<Box
+			flexShrink={0}
 			flexDirection="column"
 			width={compact ? '100%' : GUIDE_WIDTH}
 			flexGrow={compact ? 1 : 0}

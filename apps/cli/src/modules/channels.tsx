@@ -12,6 +12,7 @@ export function Channels() {
 
 	return (
 		<Box
+			flexShrink={0}
 			flexDirection="column"
 			width={compact ? '100%' : CHANNELS_WIDTH}
 			flexGrow={compact ? 1 : 0}

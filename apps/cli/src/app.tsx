@@ -20,7 +20,8 @@ export default function App() {
 	// const showThreads = compact ? activePanel === 'threads' : true;
 
 	return (
-		<Box flexDirection="column" width="100%" height={height}>
+		// https://github.com/vadimdemedes/ink/issues/450#issuecomment-1836274483
+		<Box flexDirection="column" width="100%" height={height - 1}>
 			<BarTop />
 			<Box flexDirection="row" width="100%" flexGrow={1}>
 				<Channels />
