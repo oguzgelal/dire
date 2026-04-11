@@ -1,6 +1,8 @@
-import React from 'react';
-import {Box, Text} from 'ink';
-import {useIsCompact} from '../hooks/useIsCompact.js';
+import React from "react";
+import { Box, Text } from "ink";
+import { useIsCompact } from "../hooks/useIsCompact.js";
+import { theme } from "../common/theme.js";
+import { Shortcut } from "./shortcut.js";
 
 export function BarBottom() {
 	const compact = useIsCompact();
@@ -14,38 +16,17 @@ export function BarBottom() {
 			justifyContent="center"
 		>
 			{/* navigate */}
-			<Text color="gray">
-				<Text bold color="white">
-					[↑↓]
-				</Text>{' '}
-				navigate
-			</Text>
+			<Shortcut shortcut="↑↓" description="navigate" />
 
 			{/* select */}
 			{!compact && (
 				<>
-					<Text color="gray">
-						<Text bold color="white">
-							[←→]
-						</Text>{' '}
-						switch panels
-					</Text>
-					<Text color="gray">
-						<Text bold color="white">
-							[enter]
-						</Text>{' '}
-						select
-					</Text>
+					<Shortcut shortcut="←→" description="switch panels" />
+					<Shortcut shortcut="enter" description="select" />
 				</>
 			)}
-
 			{/* quit */}
-			<Text color="gray">
-				<Text bold color="white">
-					[q]
-				</Text>{' '}
-				quit
-			</Text>
+			<Shortcut shortcut="q" description="quit" />
 		</Box>
 	);
 }

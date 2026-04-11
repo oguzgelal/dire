@@ -1,0 +1,4 @@
+{
+	"extends": "@vdemedes/prettier-config",
+	"bracketSpacing": true
+}

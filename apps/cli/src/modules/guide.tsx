@@ -1,7 +1,8 @@
-import React from 'react';
-import {Box, Text} from 'ink';
-import {GUIDE_WIDTH} from '../common/consts.js';
-import {useIsCompact} from '../hooks/useIsCompact.js';
+import React from "react";
+import { Box, Text } from "ink";
+import { GUIDE_WIDTH } from "../common/consts.js";
+import { useIsCompact } from "../hooks/useIsCompact.js";
+import { Shortcut } from "../components/shortcut.js";
 
 export function Guide() {
 	const compact = useIsCompact();
@@ -10,7 +11,7 @@ export function Guide() {
 		<Box
 			flexShrink={0}
 			flexDirection="column"
-			width={compact ? '100%' : GUIDE_WIDTH}
+			width={compact ? "100%" : GUIDE_WIDTH}
 			flexGrow={compact ? 1 : 0}
 			gap={0}
 		>
@@ -19,51 +20,17 @@ export function Guide() {
 				paddingX={1}
 				flexGrow={1}
 				borderStyle="single"
-				borderColor="white"
 				flexDirection="column"
 			>
 				<Box marginBottom={1}>
-					<Text bold color="white">
-						Options
-					</Text>
+					<Text bold>Options</Text>
 				</Box>
 
 				<Box flexDirection="column">
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[u]
-							</Text>{' '}
-							Upvote
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[d]
-							</Text>{' '}
-							Downvote
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[r]
-							</Text>{' '}
-							Report
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[p]
-							</Text>{' '}
-							Pin channel
-						</Text>
-					</Box>
+					<Shortcut shortcut="u" description="upvote" />
+					<Shortcut shortcut="d" description="downvote" />
+					<Shortcut shortcut="r" description="report" />
+					<Shortcut shortcut="p" description="pin channel" />
 				</Box>
 			</Box>
 
@@ -72,69 +39,19 @@ export function Guide() {
 				paddingX={1}
 				flexGrow={1}
 				borderStyle="single"
-				borderColor="white"
 				flexDirection="column"
 			>
 				<Box marginBottom={1}>
-					<Text bold color="white">
-						Commands
-					</Text>
+					<Text bold>Commands</Text>
 				</Box>
 
 				<Box flexDirection="column">
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[x]
-							</Text>{' '}
-							Next page
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[z]
-							</Text>{' '}
-							Previous page
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[s]
-							</Text>{' '}
-							Sign in
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[n]
-							</Text>{' '}
-							New post
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[n]
-							</Text>{' '}
-							New channel
-						</Text>
-					</Box>
-
-					<Box>
-						<Text color="gray">
-							<Text bold color="white">
-								[r]
-							</Text>{' '}
-							Refresh
-						</Text>
-					</Box>
+					<Shortcut shortcut="x" description="next page" />
+					<Shortcut shortcut="z" description="previous page" />
+					<Shortcut shortcut="s" description="sign in" />
+					<Shortcut shortcut="n" description="new post" />
+					<Shortcut shortcut="n" description="new channel" />
+					<Shortcut shortcut="r" description="refresh" />
 				</Box>
 			</Box>
 		</Box>

@@ -1,62 +1,74 @@
-import React from 'react';
-import {Box, Text} from 'ink';
-import {useDire} from '../hooks/useDire.js';
+import React from "react";
+import { Box, Text } from "ink";
+import {
+	useNavigation,
+	useNavigationFor,
+	useThreads,
+} from "../store/selectors.js";
+import { formatNumber, randomNumber } from "../common/utils.js";
+import { theme } from "../common/theme.js";
 
 export function Threads() {
-	const {threads, activePanel, selectionThreadIndex} = useDire();
+	const threads = useThreads();
+	const navigation = useNavigation();
+	const navigationThreads = useNavigationFor("threads");
 
-	const active = activePanel === 'threads';
+	const isActive = navigation?.activePanel === "threads";
 
 	return (
 		<Box
 			flexDirection="column"
 			flexGrow={1}
 			borderStyle="single"
-			borderColor={active ? 'cyan' : 'gray'}
+			borderColor={isActive ? theme.primary : theme.dim}
 			paddingX={1}
 		>
 			<Box marginBottom={1}>
-				<Text bold color="white">
-					#test
-				</Text>
-				<Text color="gray"> — {threads.length} threads</Text>
+				<Text bold>#test</Text>
+				<Text color={theme.dim}> — {threads.length} threads</Text>
 			</Box>
 			{threads.length === 0 ? (
-				<Text color="gray" italic>
+				<Text color={theme.dim} italic>
 					No threads in this channel yet.
 				</Text>
 			) : (
 				threads.map((thread, index) => {
-					const isSelected = index === selectionThreadIndex;
+					const isSelected = index === navigationThreads?.index;
+					const voteCount = randomNumber(-10000, 20000);
+					const voteCountFormatted = formatNumber(Math.abs(voteCount));
+					const replyCount = randomNumber(0, 1000);
+					const replyCountFormatted = formatNumber(replyCount);
+					let voteColor = "gray";
+					let voteSymbol = "↑";
+					if (voteCount > 0) {
+						voteColor = theme.upvote;
+					} else if (voteCount < 0) {
+						voteColor = theme.downvote;
+						voteSymbol = "↓";
+					}
 
 					return (
 						<Box key={thread.id} flexDirection="column" marginBottom={1}>
+							{/* row - content */}
 							<Box>
-								{isSelected && active ? (
-									<Text color="cyan" bold>
-										{'❯ '}
-									</Text>
-								) : (
-									<Text>{'  '}</Text>
-								)}
-								<Text
-									bold
-									color={isSelected && active ? 'cyan' : 'white'}
-									inverse={isSelected && active}
-								>
-									{thread.author}
+								<Text bold color={isActive ? theme.primary : theme.dim}>
+									{isSelected ? "❯ " : "  "}
 								</Text>
-								<Text color="gray"> · {thread.time}</Text>
+								<Text color={voteColor}>
+									{voteSymbol}
+									{voteCountFormatted}
+								</Text>
+								<Text bold> · </Text>
+								<Text color={theme.dim}>
+									{`${replyCountFormatted}`} replies
+								</Text>
+								<Text bold> · </Text>
+								<Text color={theme.dim}>1h ago</Text>
 							</Box>
+
+							{/* row - replies */}
 							<Box paddingLeft={2}>
-								<Text color={isSelected && active ? 'white' : 'gray'}>
-									{thread.preview}
-								</Text>
-							</Box>
-							<Box paddingLeft={2}>
-								<Text color="gray" dimColor>
-									{thread.replies} {thread.replies === 1 ? 'reply' : 'replies'}
-								</Text>
+								<Text>{thread.preview}</Text>
 							</Box>
 						</Box>
 					);
