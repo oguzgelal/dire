@@ -3,7 +3,8 @@ import { useDire } from "../store/store.js";
 
 export function useInputControl() {
 	const { exit } = useApp();
-	const { tabSet } = useDire();
+	const { onArrowUp, onArrowDown, onArrowLeft, onArrowRight, onEnter } =
+		useDire();
 
 	useInput((input, key) => {
 		if (input === "q") {
@@ -11,43 +12,29 @@ export function useInputControl() {
 			return;
 		}
 
-		// if (key.leftArrow) {
-		// 	activePanelSet('channels');
-		// 	return;
-		// }
+		if (key.leftArrow) {
+			onArrowLeft();
+			return;
+		}
 
-		// if (key.rightArrow) {
-		// 	if (activePanel === 'channels') {
-		// 		activePanelSet('threads');
-		// 		selectionThreadIndexSet(0);
-		// 		return;
-		// 	}
-		// }
+		if (key.rightArrow) {
+			onArrowRight();
+			return;
+		}
 
-		// if (key.return) {
-		// 	if (activePanel === 'channels') {
-		// 		activePanelSet('threads');
-		// 		selectionThreadIndexSet(0);
-		// 		return;
-		// 	}
-		// }
+		if (key.return) {
+			onEnter();
+			return;
+		}
 
-		// if (key.upArrow) {
-		// 	if (activePanel === 'channels') {
-		// 		selectionChannelIndexSet(Math.max(0, selectionChannelIndex - 1));
-		// 	} else {
-		// 		selectionThreadIndexSet(Math.max(0, selectionThreadIndex - 1));
-		// 	}
+		if (key.upArrow) {
+			onArrowUp();
+			return;
+		}
 
-		// 	return;
-		// }
-
-		// if (key.downArrow) {
-		// 	if (activePanel === 'channels') {
-		// 		selectionChannelIndexSet(selectionThreadIndex + 1);
-		// 	} else {
-		// 		selectionThreadIndexSet(selectionThreadIndex + 1);
-		// 	}
-		// }
+		if (key.downArrow) {
+			onArrowDown();
+			return;
+		}
 	});
 }

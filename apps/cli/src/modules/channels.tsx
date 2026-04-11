@@ -8,6 +8,7 @@ import {
 	useNavigationFor,
 } from "../store/selectors.js";
 import { theme } from "../common/theme.js";
+import { ScrollList } from "../components/scroll-list.js";
 
 export function Channels() {
 	const compact = useIsCompact();
@@ -30,34 +31,36 @@ export function Channels() {
 			<Box marginBottom={1}>
 				<Text bold>Channels</Text>
 			</Box>
-			{channels.map((channel, index) => {
-				const isSelected = index === navigationChannels?.index;
-				const hasUnread = channel.unread > 0;
+			<ScrollList
+				selectedItemIndex={navigationChannels?.index}
+				items={channels.map((channel, index) => ({
+					id: channel.name,
+					content: () => {
+						const isSelected = index === navigationChannels?.index;
+						const hasUnread = channel.unread > 0;
 
-				return (
-					<Box key={channel.name}>
-						{isSelected ? (
-							<Text color={active ? theme.primary : theme.dim} bold>
-								{"❯ "}
-							</Text>
-						) : (
-							<Text>{"  "}</Text>
-						)}
-						<Text
-							color={isSelected && active ? theme.primary : undefined}
-							bold={isSelected}
-						>
-							#{channel.name}
-						</Text>
-						{hasUnread && (
-							<Text color="green" bold>
-								{" "}
-								({channel.unread})
-							</Text>
-						)}
-					</Box>
-				);
-			})}
+						return (
+							<Box key={channel.name}>
+								<Text color={active ? theme.primary : theme.dim} bold>
+									{isSelected ? "❯ " : "  "}
+								</Text>
+								<Text
+									color={isSelected && active ? theme.primary : undefined}
+									bold={isSelected}
+								>
+									#{channel.name}
+								</Text>
+								{hasUnread && (
+									<Text color="green" bold>
+										{" "}
+										({channel.unread})
+									</Text>
+								)}
+							</Box>
+						);
+					},
+				}))}
+			/>
 		</Box>
 	);
 }
