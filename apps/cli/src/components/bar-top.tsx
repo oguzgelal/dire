@@ -1,7 +1,8 @@
 import { CHANNELS_WIDTH } from "../common/consts.js"
-import { theme } from "../common/theme.js"
+import { useTheme } from "../common/theme.js"
 
 export function BarTop() {
+	const theme = useTheme()
 	return (
 		<box flexShrink={0} width="100%" paddingX={1}>
 			{/* logo */}

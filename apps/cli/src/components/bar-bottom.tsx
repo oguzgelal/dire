@@ -1,8 +1,9 @@
 import { useIsCompact } from "../hooks/useIsCompact.js";
-import { theme } from "../common/theme.js";
+import { useTheme } from "../common/theme.js";
 import { Shortcut } from "./shortcut.js";
 
 export function BarBottom() {
+	const theme = useTheme();
 	const compact = useIsCompact();
 
 	return (

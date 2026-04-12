@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { theme } from "../common/theme.js";
+import { useTheme } from "../common/theme.js";
+import { ScrollBoxRenderable } from "@opentui/core";
 
 type ScrollListProps = {
 	active?: boolean;
@@ -15,21 +16,23 @@ export function ScrollList({
 	items,
 	selectedItemIndex,
 }: ScrollListProps) {
-	const scrollboxRef = useRef<any>(null);
+	const theme = useTheme();
+	const scrollboxRef = useRef<ScrollBoxRenderable>(null);
 
-	// useEffect(() => {
-	// 	if (selectedItemIndex == null || !scrollboxRef.current) return
-	// 	const childId = items[selectedItemIndex]?.id
-	// 	if (childId) {
-	// 		scrollboxRef.current.scrollChildIntoView(childId)
-	// 	}
-	// }, [selectedItemIndex, items])
+	useEffect(() => {
+		if (selectedItemIndex == null || !scrollboxRef.current) return;
+		const childId = items[selectedItemIndex]?.id;
+		if (childId) {
+			scrollboxRef.current.scrollChildIntoView(childId);
+		}
+	}, [selectedItemIndex, items]);
 
 	return (
 		<scrollbox
 			ref={scrollboxRef}
 			focused={active}
 			height="100%"
+			scrollX={false}
 			flexGrow={1}
 			style={{
 				scrollbarOptions: {

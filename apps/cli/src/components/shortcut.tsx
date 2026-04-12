@@ -1,16 +1,15 @@
-import { theme } from "../common/theme.js"
+import { useTheme } from "../common/theme.js";
 
 type ShortcutProps = {
-	shortcut: string
-	description: string
-}
+	shortcut: string;
+	description: string;
+};
 
 export function Shortcut({ shortcut, description }: ShortcutProps) {
+	const theme = useTheme();
 	return (
-		<text>
-			<strong>[{shortcut}]</strong>{" "}
-			<span fg={theme.dim}>{description}</span>
+		<text fg={theme.fg}>
+			<strong>[{shortcut}]</strong> <span fg={theme.muted}>{description}</span>
 		</text>
-	)
+	);
 }
-

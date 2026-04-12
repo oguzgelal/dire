@@ -5,11 +5,12 @@ import {
 	useNavigation,
 	useNavigationFor,
 } from "../store/selectors.js";
-import { theme } from "../common/theme.js";
+import { useTheme } from "../common/theme.js";
 import { ScrollList } from "../components/scroll-list.js";
 import { Section } from "../components/section.js";
 
 export function Channels() {
+	const theme = useTheme();
 	const compact = useIsCompact();
 	const channels = useChannels();
 	const navigation = useNavigation();
@@ -41,10 +42,10 @@ export function Channels() {
 									alignItems: "center",
 								}}
 							>
-								<text fg={active ? theme.primary : theme.dim}>
+								<text fg={active ? theme.primary : theme.muted}>
 									<strong>{isSelected ? `${SELECTOR} ` : "  "}</strong>
 								</text>
-								<text fg={isSelected && active ? theme.primary : undefined}>
+								<text fg={isSelected && active ? theme.primary : theme.fg}>
 									{isSelected && active ? (
 										<strong>#{channel.name}</strong>
 									) : (

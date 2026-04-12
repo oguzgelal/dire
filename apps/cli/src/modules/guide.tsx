@@ -1,10 +1,10 @@
-import { GUIDE_WIDTH } from "../common/consts.js"
-import { useIsCompact } from "../hooks/useIsCompact.js"
-import { Shortcut } from "../components/shortcut.js"
-import { Section } from "../components/section.js"
+import { GUIDE_WIDTH } from "../common/consts.js";
+import { useIsCompact } from "../hooks/useIsCompact.js";
+import { Shortcut } from "../components/shortcut.js";
+import { Section } from "../components/section.js";
 
 export function Guide() {
-	const compact = useIsCompact()
+	const compact = useIsCompact();
 
 	return (
 		<box
@@ -33,8 +33,9 @@ export function Guide() {
 					<Shortcut shortcut="n" description="new post" />
 					<Shortcut shortcut="n" description="new channel" />
 					<Shortcut shortcut="r" description="refresh" />
+					<Shortcut shortcut="t" description="toggle theme" />
 				</box>
 			</Section>
 		</box>
-	)
+	);
 }
