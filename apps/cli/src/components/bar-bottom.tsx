@@ -1,40 +1,38 @@
-import React from "react";
-import { Box, Text } from "ink";
-import { useIsCompact } from "../hooks/useIsCompact.js";
-import { theme } from "../common/theme.js";
-import { Shortcut } from "./shortcut.js";
+import { useIsCompact } from "../hooks/useIsCompact.js"
+import { theme } from "../common/theme.js"
+import { Shortcut } from "./shortcut.js"
 
 export function BarBottom() {
-	const compact = useIsCompact();
+	const compact = useIsCompact()
 
 	return (
-		<Box
+		<box
 			flexShrink={0}
 			paddingX={1}
 			gap={2}
 			alignItems="center"
 			justifyContent="center"
 		>
-			<Box flexGrow={1}>
-				<Text color={theme.primary} bold>
-					ꘈ DIRE (^o^)丿
-				</Text>
-			</Box>
+			<box flexGrow={1}>
+				<text fg={theme.primary}>
+					<strong>{"\u{A608}"} DIRE (^o^){"\u{4E3F}"}</strong>
+				</text>
+			</box>
 
-			<Box gap={2}>
+			<box gap={2}>
 				{/* navigate */}
-				<Shortcut shortcut="↑↓" description="navigate" />
+				<Shortcut shortcut={"\u{2191}\u{2193}"} description="navigate" />
 
 				{/* select */}
 				{!compact && (
 					<>
-						<Shortcut shortcut="←→" description="switch panels" />
+						<Shortcut shortcut={"\u{2190}\u{2192}"} description="switch panels" />
 						<Shortcut shortcut="enter" description="select" />
 					</>
 				)}
 				{/* quit */}
 				<Shortcut shortcut="q" description="quit" />
-			</Box>
-		</Box>
-	);
+			</box>
+		</box>
+	)
 }

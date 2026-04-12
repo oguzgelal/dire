@@ -1,40 +1,40 @@
-import { useApp, useInput } from "ink";
-import { useDire } from "../store/store.js";
+import { useKeyboard, useRenderer } from "@opentui/react"
+import { useDire } from "../store/store.js"
 
 export function useInputControl() {
-	const { exit } = useApp();
+	const renderer = useRenderer()
 	const { onArrowUp, onArrowDown, onArrowLeft, onArrowRight, onEnter } =
-		useDire();
+		useDire()
 
-	useInput((input, key) => {
-		if (input === "q") {
-			exit();
-			return;
+	useKeyboard((key) => {
+		if (key.name === "q") {
+			renderer.destroy()
+			return
 		}
 
-		if (key.leftArrow) {
-			onArrowLeft();
-			return;
+		if (key.name === "left") {
+			onArrowLeft()
+			return
 		}
 
-		if (key.rightArrow) {
-			onArrowRight();
-			return;
+		if (key.name === "right") {
+			onArrowRight()
+			return
 		}
 
-		if (key.return) {
-			onEnter();
-			return;
+		if (key.name === "enter") {
+			onEnter()
+			return
 		}
 
-		if (key.upArrow) {
-			onArrowUp();
-			return;
+		if (key.name === "up") {
+			onArrowUp()
+			return
 		}
 
-		if (key.downArrow) {
-			onArrowDown();
-			return;
+		if (key.name === "down") {
+			onArrowDown()
+			return
 		}
-	});
+	})
 }

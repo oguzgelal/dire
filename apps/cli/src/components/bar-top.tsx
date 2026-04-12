@@ -1,26 +1,24 @@
-import React from "react";
-import { Box, Text } from "ink";
-import { CHANNELS_WIDTH } from "../common/consts.js";
-import { theme } from "../common/theme.js";
+import { CHANNELS_WIDTH } from "../common/consts.js"
+import { theme } from "../common/theme.js"
 
 export function BarTop() {
 	return (
-		<Box flexShrink={0} width={"100%"} paddingX={1}>
+		<box flexShrink={0} width="100%" paddingX={1}>
 			{/* logo */}
-			<Box width={CHANNELS_WIDTH} flexShrink={0}>
-				<Text color={theme.primary} bold>
-					ꘈ DIRE (^o^)丿
-				</Text>
-			</Box>
+			<box width={CHANNELS_WIDTH} flexShrink={0}>
+				<text fg={theme.primary}>
+					<strong>{"\u{A608}"} DIRE (^o^){"\u{4E3F}"}</strong>
+				</text>
+			</box>
 
-			<Box flexGrow={1} />
+			<box flexGrow={1} />
 
 			{/* profile */}
-			<Box>
-				<Text color={theme.primary} bold>
-					oguzgelal [0]
-				</Text>
-			</Box>
-		</Box>
-	);
+			<box>
+				<text fg={theme.primary}>
+					<strong>oguzgelal [0]</strong>
+				</text>
+			</box>
+		</box>
+	)
 }
