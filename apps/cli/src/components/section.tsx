@@ -17,11 +17,12 @@ export const Section: FC<SectionProps> = ({
 }) => {
 	return (
 		<Box
+			position="relative"
 			flexShrink={0}
 			flexDirection="column"
 			borderStyle="single"
 			borderColor={active ? theme.primary : theme.dim}
-			paddingX={1}
+			paddingLeft={1}
 			{...rest}
 		>
 			{!!label && <SectionLabel label={label} />}

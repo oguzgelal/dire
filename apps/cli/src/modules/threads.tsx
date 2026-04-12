@@ -7,6 +7,7 @@ import {
 } from "../store/selectors.js";
 import { formatNumber, randomNumber } from "../common/utils.js";
 import { theme } from "../common/theme.js";
+import { Section } from "../components/section.js";
 
 export function Threads() {
 	const threads = useThreads();
@@ -16,13 +17,7 @@ export function Threads() {
 	const isActive = navigation?.activePanel === "threads";
 
 	return (
-		<Box
-			flexDirection="column"
-			flexGrow={1}
-			borderStyle="single"
-			borderColor={isActive ? theme.primary : theme.dim}
-			paddingX={1}
-		>
+		<Section flexGrow={1} borderStyle="single" active={isActive}>
 			<Box marginBottom={1}>
 				<Text bold>#test</Text>
 				<Text color={theme.dim}> — {threads.length} threads</Text>
@@ -74,6 +69,6 @@ export function Threads() {
 					);
 				})
 			)}
-		</Box>
+		</Section>
 	);
 }

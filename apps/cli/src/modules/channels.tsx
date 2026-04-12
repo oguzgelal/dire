@@ -9,7 +9,6 @@ import {
 } from "../store/selectors.js";
 import { theme } from "../common/theme.js";
 import { ScrollList } from "../components/scroll-list.js";
-import { SectionLabel } from "../components/section-label.js";
 import { Section } from "../components/section.js";
 
 export function Channels() {
@@ -28,6 +27,7 @@ export function Channels() {
 			label="Channels"
 		>
 			<ScrollList
+				active={active}
 				selectedItemIndex={navigationChannels?.index}
 				items={channels.map((channel, index) => ({
 					id: channel.name,
