@@ -46,6 +46,7 @@ interface DireState {
 	tabs: Tab[];
 	themeMode: "light" | "dark" | null;
 	activeTabIndex: number;
+	// dialog: "options" | null;
 }
 
 interface DireStateActions {

@@ -53,7 +53,7 @@ export function Threads() {
 								}}
 							>
 								<text fg={isActive ? theme.primary : theme.muted}>
-									<strong>{isSelected ? `${SELECTOR} ` : "  "}</strong>
+									<strong>{`${SELECTOR} `}</strong>
 								</text>
 								<text fg={voteColor}>
 									{voteSymbol}

@@ -272,6 +272,7 @@ export const colors = {
 
 type Theme = {
 	bg: string;
+	bgOverlay: string;
 	fg: string;
 	primary: string;
 	muted: string;
@@ -281,6 +282,7 @@ type Theme = {
 
 const darkTheme: Theme = {
 	bg: colors.trueGray[900],
+	bgOverlay: "#00000099",
 	fg: colors.trueGray[100],
 	primary: colors.cyan[500],
 	muted: colors.trueGray[500],
@@ -290,6 +292,7 @@ const darkTheme: Theme = {
 
 const lightTheme: Theme = {
 	bg: colors.white,
+	bgOverlay: "#00000088",
 	fg: colors.trueGray[900],
 	primary: colors.cyan[500],
 	muted: colors.trueGray[500],

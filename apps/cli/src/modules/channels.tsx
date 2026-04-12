@@ -42,8 +42,8 @@ export function Channels() {
 									alignItems: "center",
 								}}
 							>
-								<text fg={active ? theme.primary : theme.muted}>
-									<strong>{isSelected ? `${SELECTOR} ` : "  "}</strong>
+								<text fg={isSelected && active ? theme.primary : theme.muted}>
+									<strong>{`${SELECTOR} `}</strong>
 								</text>
 								<text fg={isSelected && active ? theme.primary : theme.fg}>
 									{isSelected && active ? (
