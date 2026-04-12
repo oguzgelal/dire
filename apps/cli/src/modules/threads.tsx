@@ -2,17 +2,18 @@ import {
 	useNavigation,
 	useNavigationFor,
 	useThreads,
-} from "../store/selectors.js"
-import { formatNumber, randomNumber } from "../common/utils.js"
-import { theme } from "../common/theme.js"
-import { Section } from "../components/section.js"
+} from "../store/selectors.js";
+import { formatNumber, randomNumber } from "../common/utils.js";
+import { theme } from "../common/theme.js";
+import { Section } from "../components/section.js";
+import { SELECTOR } from "../common/consts.js";
 
 export function Threads() {
-	const threads = useThreads()
-	const navigation = useNavigation()
-	const navigationThreads = useNavigationFor("threads")
+	const threads = useThreads();
+	const navigation = useNavigation();
+	const navigationThreads = useNavigationFor("threads");
 
-	const isActive = navigation?.activePanel === "threads"
+	const isActive = navigation?.activePanel === "threads";
 
 	return (
 		<Section flexGrow={1} active={isActive}>
@@ -28,18 +29,18 @@ export function Threads() {
 				</text>
 			) : (
 				threads.map((thread, index) => {
-					const isSelected = index === navigationThreads?.index
-					const voteCount = randomNumber(-10000, 20000)
-					const voteCountFormatted = formatNumber(Math.abs(voteCount))
-					const replyCount = randomNumber(0, 1000)
-					const replyCountFormatted = formatNumber(replyCount)
-					let voteColor = "gray"
-					let voteSymbol = "\u{2191}"
+					const isSelected = index === navigationThreads?.index;
+					const voteCount = randomNumber(-10000, 20000);
+					const voteCountFormatted = formatNumber(Math.abs(voteCount));
+					const replyCount = randomNumber(0, 1000);
+					const replyCountFormatted = formatNumber(replyCount);
+					let voteColor = "gray";
+					let voteSymbol = "\u{2191}";
 					if (voteCount > 0) {
-						voteColor = theme.upvote
+						voteColor = theme.upvote;
 					} else if (voteCount < 0) {
-						voteColor = theme.downvote
-						voteSymbol = "\u{2193}"
+						voteColor = theme.downvote;
+						voteSymbol = "\u{2193}";
 					}
 
 					return (
@@ -47,7 +48,7 @@ export function Threads() {
 							{/* row - content */}
 							<box>
 								<text fg={isActive ? theme.primary : theme.dim}>
-									<strong>{isSelected ? "\u{276F} " : "  "}</strong>
+									<strong>{isSelected ? `${SELECTOR} ` : "  "}</strong>
 								</text>
 								<text fg={voteColor}>
 									{voteSymbol}
@@ -56,9 +57,7 @@ export function Threads() {
 								<text>
 									<strong> · </strong>
 								</text>
-								<text fg={theme.dim}>
-									{`${replyCountFormatted}`} replies
-								</text>
+								<text fg={theme.dim}>{`${replyCountFormatted}`} replies</text>
 								<text>
 									<strong> · </strong>
 								</text>
@@ -70,9 +69,9 @@ export function Threads() {
 								<text>{thread.preview}</text>
 							</box>
 						</box>
-					)
+					);
 				})
 			)}
 		</Section>
-	)
+	);
 }

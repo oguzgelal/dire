@@ -1,29 +1,29 @@
-import { useEffect, useRef } from "react"
-import { theme } from "../common/theme.js"
+import { useEffect, useRef } from "react";
+import { theme } from "../common/theme.js";
 
 type ScrollListProps = {
-	active?: boolean
-	selectedItemIndex?: number
+	active?: boolean;
+	selectedItemIndex?: number;
 	items: {
-		id: string
-		content: () => React.ReactNode
-	}[]
-}
+		id: string;
+		content: () => React.ReactNode;
+	}[];
+};
 
 export function ScrollList({
 	active,
 	items,
 	selectedItemIndex,
 }: ScrollListProps) {
-	const scrollboxRef = useRef<any>(null)
+	const scrollboxRef = useRef<any>(null);
 
-	useEffect(() => {
-		if (selectedItemIndex == null || !scrollboxRef.current) return
-		const childId = items[selectedItemIndex]?.id
-		if (childId) {
-			scrollboxRef.current.scrollChildIntoView(childId)
-		}
-	}, [selectedItemIndex, items])
+	// useEffect(() => {
+	// 	if (selectedItemIndex == null || !scrollboxRef.current) return
+	// 	const childId = items[selectedItemIndex]?.id
+	// 	if (childId) {
+	// 		scrollboxRef.current.scrollChildIntoView(childId)
+	// 	}
+	// }, [selectedItemIndex, items])
 
 	return (
 		<scrollbox
@@ -45,5 +45,5 @@ export function ScrollList({
 				</box>
 			))}
 		</scrollbox>
-	)
+	);
 }
