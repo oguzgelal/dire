@@ -302,7 +302,6 @@ export function useTheme() {
 	const renderer = useRenderer();
 
 	const themeMode = themeModeState || renderer.themeMode || "dark";
-	console.log("themeMode", themeMode);
 
 	return themeMode === "light" ? lightTheme : darkTheme;
 }

@@ -1,0 +1,208 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@tuyau/core':
+        specifier: ^1.2.2
+        version: 1.2.2
+    devDependencies:
+      '@adonisjs/prettier-config':
+        specifier: ^1.4.5
+        version: 1.4.5
+      prettier:
+        specifier: ^3.8.1
+        version: 3.8.2
+      turbo:
+        specifier: ^2.8.21
+        version: 2.9.6
+
+packages:
+
+  '@adobe/css-tools@4.4.4':
+    resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
+
+  '@adonisjs/prettier-config@1.4.5':
+    resolution: {integrity: sha512-UOYmJQeOhWRIWE2v/cXmpMPq2Its5lOpNeJ+nr79yASAVFVtlDE5qdHicMgVdTbFPWFgHzmU8icVk6YmaOnSXg==}
+
+  '@chevrotain/cst-dts-gen@11.2.0':
+    resolution: {integrity: sha512-ssJFvn/UXhQQeICw3SR/fZPmYVj+JM2mP+Lx7bZ51cOeHaMWOKp3AUMuyM3QR82aFFXTfcAp67P5GpPjGmbZWQ==}
+
+  '@chevrotain/gast@11.2.0':
+    resolution: {integrity: sha512-c+KoD6eSI1xjAZZoNUW+V0l13UEn+a4ShmUrjIKs1BeEWCji0Kwhmqn5FSx1K4BhWL7IQKlV7wLR4r8lLArORQ==}
+
+  '@chevrotain/regexp-to-ast@11.2.0':
+    resolution: {integrity: sha512-lG73pBFqbXODTbXhdZwv0oyUaI+3Irm+uOv5/W79lI3g5hasYaJnVJOm3H2NkhA0Ef4XLBU4Scr7TJDJwgFkAw==}
+
+  '@chevrotain/types@11.2.0':
+    resolution: {integrity: sha512-vBMSj/lz/LqolbGQEHB0tlpW5BnljHVtp+kzjQfQU+5BtGMTuZCPVgaAjtKvQYXnHb/8i/02Kii00y0tsuwfsw==}
+
+  '@chevrotain/utils@11.2.0':
+    resolution: {integrity: sha512-+7whECg4yNWHottjvr2To2BRxL4XJVjIyyv5J4+bJ0iMOVU8j/8n1qPDLZS/90W/BObDR8VNL46lFbzY/Hosmw==}
+
+  '@turbo/darwin-64@2.9.6':
+    resolution: {integrity: sha512-X/56SnVXIQZBLKwniGTwEQTGmtE5brSACnKMBWpY3YafuxVYefrC2acamfjgxP7BG5w3I+6jf0UrLoSzgPcSJg==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@turbo/darwin-arm64@2.9.6':
+    resolution: {integrity: sha512-aalBeSl4agT/QtYGDyf/XLajedWzUC9Vg/pm/YO6QQ93vkQ91Vz5uK1ta5RbVRDozQSz4njxUNqRNmOXDzW+qw==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@turbo/linux-64@2.9.6':
+    resolution: {integrity: sha512-YKi05jnNHaD7vevgYwahpzGwbsNNTwzU2c7VZdmdFm7+cGDP4oREUWSsainiMfRqjRuolQxBwRn8wf1jmu+YZA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@turbo/linux-arm64@2.9.6':
+    resolution: {integrity: sha512-02o/ZS69cOYEDczXvOB2xmyrtzjQ2hVFtWZK1iqxXUfzMmTjZK4UumrfNnjckSg+gqeBfnPRHa0NstA173Ik3g==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@turbo/windows-64@2.9.6':
+    resolution: {integrity: sha512-wVdQjvnBI15wB6JrA+43CtUtagjIMmX6XYO758oZHAsCNSxqRlJtdyujih0D8OCnwCRWiGWGI63zAxR0hO6s9g==}
+    cpu: [x64]
+    os: [win32]
+
+  '@turbo/windows-arm64@2.9.6':
+    resolution: {integrity: sha512-1XUUyWW0W6FTSqGEhU8RHVqb2wP1SPkr7hIvBlMEwH9jr+sJQK5kqeosLJ/QaUv4ecSAd1ZhIrLoW7qslAzT4A==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@tuyau/core@1.2.2':
+    resolution: {integrity: sha512-kFE+gxuWZ4F6KjMB6wXNEP44oVdBpYyuAsOxjHpGplC5d+ErSVjynh1vN0rkv9poQJI3z+r81JKqhpmJZs886Q==}
+    engines: {node: '>=24.0.0'}
+    peerDependencies:
+      '@adonisjs/assembler': ^8.0.0-next.27
+      '@adonisjs/core': ^7.0.0-next.16
+    peerDependenciesMeta:
+      '@adonisjs/assembler':
+        optional: true
+      '@adonisjs/core':
+        optional: true
+
+  chevrotain@11.2.0:
+    resolution: {integrity: sha512-mHCHTxM51nCklUw9RzRVc0DLjAh/SAUPM4k/zMInlTIo25ldWXOZoPt7XEIk/LwoT4lFVmJcu9g5MHtx371x3A==}
+
+  edgejs-parser@0.2.19:
+    resolution: {integrity: sha512-KO9pF1JSd6dDL7+hJM1W7PbzdTV/siSCoYbN3Ej84csh4RUBd14NvE4uzm4LOiuph9w/j+YlcBkPyp0C5SOzrQ==}
+
+  ky@1.14.3:
+    resolution: {integrity: sha512-9zy9lkjac+TR1c2tG+mkNSVlyOpInnWdSMiue4F+kq8TwJSgv6o8jhLRg8Ho6SnZ9wOYUq/yozts9qQCfk7bIw==}
+    engines: {node: '>=18'}
+
+  lodash-es@4.17.23:
+    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
+
+  object-to-formdata@4.5.1:
+    resolution: {integrity: sha512-QiM9D0NiU5jV6J6tjE1g7b4Z2tcUnKs1OPUi4iMb2zH+7jwlcUrASghgkFk9GtzqNNq8rTQJtT8AzjBAvLoNMw==}
+
+  prettier-plugin-edgejs@1.0.7:
+    resolution: {integrity: sha512-IP3dEjxGUXnU9Ev6znBzPBvM6x2nIebP4NUW1Z5g1XEi37FgEzSPmQExkdVOdtf2B6oeC8r4pzIvBobLx7ewMw==}
+
+  prettier@3.8.2:
+    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  turbo@2.9.6:
+    resolution: {integrity: sha512-+v2QJey7ZUeUiuigkU+uFfklvNUyPI2VO2vBpMYJA+a1hKFLFiKtUYlRHdb3P9CrAvMzi0upbjI4WT+zKtqkBg==}
+    hasBin: true
+
+  uglify-js@3.19.3:
+    resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
+
+snapshots:
+
+  '@adobe/css-tools@4.4.4': {}
+
+  '@adonisjs/prettier-config@1.4.5':
+    dependencies:
+      prettier-plugin-edgejs: 1.0.7
+
+  '@chevrotain/cst-dts-gen@11.2.0':
+    dependencies:
+      '@chevrotain/gast': 11.2.0
+      '@chevrotain/types': 11.2.0
+      lodash-es: 4.17.23
+
+  '@chevrotain/gast@11.2.0':
+    dependencies:
+      '@chevrotain/types': 11.2.0
+      lodash-es: 4.17.23
+
+  '@chevrotain/regexp-to-ast@11.2.0': {}
+
+  '@chevrotain/types@11.2.0': {}
+
+  '@chevrotain/utils@11.2.0': {}
+
+  '@turbo/darwin-64@2.9.6':
+    optional: true
+
+  '@turbo/darwin-arm64@2.9.6':
+    optional: true
+
+  '@turbo/linux-64@2.9.6':
+    optional: true
+
+  '@turbo/linux-arm64@2.9.6':
+    optional: true
+
+  '@turbo/windows-64@2.9.6':
+    optional: true
+
+  '@turbo/windows-arm64@2.9.6':
+    optional: true
+
+  '@tuyau/core@1.2.2':
+    dependencies:
+      ky: 1.14.3
+      object-to-formdata: 4.5.1
+
+  chevrotain@11.2.0:
+    dependencies:
+      '@chevrotain/cst-dts-gen': 11.2.0
+      '@chevrotain/gast': 11.2.0
+      '@chevrotain/regexp-to-ast': 11.2.0
+      '@chevrotain/types': 11.2.0
+      '@chevrotain/utils': 11.2.0
+      lodash-es: 4.17.23
+
+  edgejs-parser@0.2.19:
+    dependencies:
+      chevrotain: 11.2.0
+
+  ky@1.14.3: {}
+
+  lodash-es@4.17.23: {}
+
+  object-to-formdata@4.5.1: {}
+
+  prettier-plugin-edgejs@1.0.7:
+    dependencies:
+      '@adobe/css-tools': 4.4.4
+      edgejs-parser: 0.2.19
+      prettier: 3.8.2
+      uglify-js: 3.19.3
+
+  prettier@3.8.2: {}
+
+  turbo@2.9.6:
+    optionalDependencies:
+      '@turbo/darwin-64': 2.9.6
+      '@turbo/darwin-arm64': 2.9.6
+      '@turbo/linux-64': 2.9.6
+      '@turbo/linux-arm64': 2.9.6
+      '@turbo/windows-64': 2.9.6
+      '@turbo/windows-arm64': 2.9.6
+
+  uglify-js@3.19.3: {}
