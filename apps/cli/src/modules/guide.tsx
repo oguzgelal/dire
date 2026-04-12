@@ -3,6 +3,7 @@ import { Box, Text } from "ink";
 import { GUIDE_WIDTH } from "../common/consts.js";
 import { useIsCompact } from "../hooks/useIsCompact.js";
 import { Shortcut } from "../components/shortcut.js";
+import { Section } from "../components/section.js";
 
 export function Guide() {
 	const compact = useIsCompact();
@@ -16,35 +17,17 @@ export function Guide() {
 			gap={0}
 		>
 			{/* options */}
-			<Box
-				paddingX={1}
-				flexGrow={1}
-				borderStyle="single"
-				flexDirection="column"
-			>
-				<Box marginBottom={1}>
-					<Text bold>Options</Text>
-				</Box>
-
+			<Section flexGrow={1} label="Options">
 				<Box flexDirection="column">
 					<Shortcut shortcut="u" description="upvote" />
 					<Shortcut shortcut="d" description="downvote" />
 					<Shortcut shortcut="r" description="report" />
 					<Shortcut shortcut="p" description="pin channel" />
 				</Box>
-			</Box>
+			</Section>
 
 			{/* Commands */}
-			<Box
-				paddingX={1}
-				flexGrow={1}
-				borderStyle="single"
-				flexDirection="column"
-			>
-				<Box marginBottom={1}>
-					<Text bold>Commands</Text>
-				</Box>
-
+			<Section flexGrow={1} label="Commands">
 				<Box flexDirection="column">
 					<Shortcut shortcut="x" description="next page" />
 					<Shortcut shortcut="z" description="previous page" />
@@ -53,7 +36,7 @@ export function Guide() {
 					<Shortcut shortcut="n" description="new channel" />
 					<Shortcut shortcut="r" description="refresh" />
 				</Box>
-			</Box>
+			</Section>
 		</Box>
 	);
 }

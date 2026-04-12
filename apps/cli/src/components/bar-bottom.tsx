@@ -15,18 +15,26 @@ export function BarBottom() {
 			alignItems="center"
 			justifyContent="center"
 		>
-			{/* navigate */}
-			<Shortcut shortcut="↑↓" description="navigate" />
+			<Box flexGrow={1}>
+				<Text color={theme.primary} bold>
+					ꘈ DIRE (^o^)丿
+				</Text>
+			</Box>
 
-			{/* select */}
-			{!compact && (
-				<>
-					<Shortcut shortcut="←→" description="switch panels" />
-					<Shortcut shortcut="enter" description="select" />
-				</>
-			)}
-			{/* quit */}
-			<Shortcut shortcut="q" description="quit" />
+			<Box gap={2}>
+				{/* navigate */}
+				<Shortcut shortcut="↑↓" description="navigate" />
+
+				{/* select */}
+				{!compact && (
+					<>
+						<Shortcut shortcut="←→" description="switch panels" />
+						<Shortcut shortcut="enter" description="select" />
+					</>
+				)}
+				{/* quit */}
+				<Shortcut shortcut="q" description="quit" />
+			</Box>
 		</Box>
 	);
 }

@@ -9,6 +9,8 @@ import {
 } from "../store/selectors.js";
 import { theme } from "../common/theme.js";
 import { ScrollList } from "../components/scroll-list.js";
+import { SectionLabel } from "../components/section-label.js";
+import { Section } from "../components/section.js";
 
 export function Channels() {
 	const compact = useIsCompact();
@@ -19,18 +21,12 @@ export function Channels() {
 	const active = navigation?.activePanel === "channels";
 
 	return (
-		<Box
-			flexShrink={0}
-			flexDirection="column"
+		<Section
 			width={compact ? "100%" : CHANNELS_WIDTH}
 			flexGrow={compact ? 1 : 0}
-			borderStyle="single"
-			borderColor={active ? theme.primary : theme.dim}
-			paddingX={1}
+			active={active}
+			label="Channels"
 		>
-			<Box marginBottom={1}>
-				<Text bold>Channels</Text>
-			</Box>
 			<ScrollList
 				selectedItemIndex={navigationChannels?.index}
 				items={channels.map((channel, index) => ({
@@ -47,6 +43,7 @@ export function Channels() {
 								<Text
 									color={isSelected && active ? theme.primary : undefined}
 									bold={isSelected}
+									inverse={isSelected && active}
 								>
 									#{channel.name}
 								</Text>
@@ -61,6 +58,6 @@ export function Channels() {
 					},
 				}))}
 			/>
-		</Box>
+		</Section>
 	);
 }

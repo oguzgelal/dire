@@ -22,9 +22,9 @@ export default function App() {
 	return (
 		// https://github.com/vadimdemedes/ink/issues/450#issuecomment-1836274483
 		<>
-			<Box height={1} width="100%" />
-			<Box flexDirection="column" width="100%" height={height - 2}>
-				<BarTop />
+			{/* <Box height={1} width="100%" /> */}
+			<Box flexDirection="column" width="100%" height={height - 1}>
+				{/* <BarTop /> */}
 				<Box flexDirection="row" width="100%" flexGrow={1}>
 					<Channels />
 					<Threads />

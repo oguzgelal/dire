@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { devtools, persist, type StorageValue } from "zustand/middleware";
+import { produce } from "immer";
 import Conf from "conf";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
 
@@ -55,6 +56,29 @@ interface DireStateActions {
 	onEnter: () => void;
 }
 
+// Navigation helpers that operate on immer drafts
+
+function activeTab(state: DireState) {
+	return state.tabs[state.activeTabIndex];
+}
+
+function moveIndex(state: DireState, delta: number) {
+	const tab = activeTab(state);
+	if (!tab) return;
+	const panel = tab.navigation.activePanel;
+	const list = panel === "channels" ? tab.channels : tab.threads;
+	const newIndex = tab.navigation[panel].index + delta;
+	if (newIndex < 0 || newIndex >= list.length) return;
+	tab.navigation[panel].index = newIndex;
+}
+
+function switchPanel(state: DireState, panel: Panel, resetIndex = false) {
+	const tab = activeTab(state);
+	if (!tab || tab.navigation.activePanel === panel) return;
+	tab.navigation.activePanel = panel;
+	if (resetIndex) tab.navigation[panel].index = 0;
+}
+
 export const useDire = create<DireState & DireStateActions>()(
 	devtools(
 		persist(
@@ -63,7 +87,7 @@ export const useDire = create<DireState & DireStateActions>()(
 				tabs: [
 					{
 						navigation: {
-							activePanel: "channels",
+							activePanel: "channels" as Panel,
 							channels: { index: 0 },
 							threads: { index: 0 },
 						},
@@ -191,103 +215,26 @@ export const useDire = create<DireState & DireStateActions>()(
 						],
 					},
 				],
-				tabSet: (index) => {
-					set((state) => {
-						if (index < 0 || index >= state.tabs.length) {
-							return {};
-						}
-						return {
-							activeTabIndex: index,
-						};
-					});
-				},
-				onArrowUp: () => {
-					set((state) => {
-						const tab = state.tabs[state.activeTabIndex];
-						if (!tab) return {};
-						const panel = tab.navigation.activePanel;
-						const currentIndex = tab.navigation[panel].index;
-						if (currentIndex <= 0) return {};
-						const tabs = [...state.tabs];
-						tabs[state.activeTabIndex] = {
-							...tab,
-							navigation: {
-								...tab.navigation,
-								[panel]: { index: currentIndex - 1 },
-							},
-						};
-						return { tabs };
-					});
-				},
-				onArrowDown: () => {
-					set((state) => {
-						const tab = state.tabs[state.activeTabIndex];
-						if (!tab) return {};
-						const panel = tab.navigation.activePanel;
-						const list = panel === "channels" ? tab.channels : tab.threads;
-						const currentIndex = tab.navigation[panel].index;
-						if (currentIndex >= list.length - 1) return {};
-						const tabs = [...state.tabs];
-						tabs[state.activeTabIndex] = {
-							...tab,
-							navigation: {
-								...tab.navigation,
-								[panel]: { index: currentIndex + 1 },
-							},
-						};
-						return { tabs };
-					});
-				},
-				onArrowLeft: () => {
-					set((state) => {
-						const tab = state.tabs[state.activeTabIndex];
-						if (!tab) return {};
-						if (tab.navigation.activePanel === "channels") return {};
-						const tabs = [...state.tabs];
-						tabs[state.activeTabIndex] = {
-							...tab,
-							navigation: {
-								...tab.navigation,
-								activePanel: "channels",
-							},
-						};
-						return { tabs };
-					});
-				},
-				onArrowRight: () => {
-					set((state) => {
-						const tab = state.tabs[state.activeTabIndex];
-						if (!tab) return {};
-						if (tab.navigation.activePanel === "threads") return {};
-						const tabs = [...state.tabs];
-						tabs[state.activeTabIndex] = {
-							...tab,
-							navigation: {
-								...tab.navigation,
-								activePanel: "threads",
-								threads: { index: 0 },
-							},
-						};
-						return { tabs };
-					});
-				},
-				onEnter: () => {
-					set((state) => {
-						const tab = state.tabs[state.activeTabIndex];
-						if (!tab) return {};
-						if (tab.navigation.activePanel !== "channels") return {};
-						const tabs = [...state.tabs];
-						tabs[state.activeTabIndex] = {
-							...tab,
-							navigation: {
-								...tab.navigation,
-								activePanel: "threads",
-								threads: { index: 0 },
-							},
-						};
-						return { tabs };
-					});
-				},
+				tabSet: (index) =>
+					set(
+						produce((state) => {
+							if (index >= 0 && index < state.tabs.length) {
+								state.activeTabIndex = index;
+							}
+						})
+					),
+				onArrowUp: () => set(produce((state) => moveIndex(state, -1))),
+				onArrowDown: () => set(produce((state) => moveIndex(state, 1))),
+				onArrowLeft: () => set(produce((state) => switchPanel(state, "channels"))), // prettier-ignore
+				onArrowRight: () => set(produce((state) => switchPanel(state, "threads", true))), // prettier-ignore
+				onEnter: () =>
+					set(
+						produce((state) => {
+							if (activeTab(state)?.navigation.activePanel === "channels") {
+								switchPanel(state, "threads", true);
+							}
+						})
+					),
 			}),
 			{
 				name: "dire-storage",
