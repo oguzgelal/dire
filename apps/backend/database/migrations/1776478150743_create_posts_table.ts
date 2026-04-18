@@ -8,9 +8,9 @@ export default class extends BaseSchema {
       table.uuid('id').notNullable().primary()
       table.uuid('user_id').nullable().references('users.id').onDelete('SET NULL') // prettier-ignore
 
-      table.string('title')
-      table.string('url').nullable()
-      table.string('body').nullable()
+      table.text('title')
+      table.text('url').nullable()
+      table.text('body').nullable()
 
       table.integer('votes').defaultTo(0)
       table.integer('upvotes').defaultTo(0)

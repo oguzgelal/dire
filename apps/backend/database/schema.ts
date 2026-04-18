@@ -33,12 +33,14 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class ChannelPostSchema extends BaseModel {
-  static $columns = ['channelId', 'createdAt', 'isDeleted', 'isPinned', 'postId', 'updatedAt'] as const
+  static $columns = ['channelId', 'createdAt', 'id', 'isDeleted', 'isPinned', 'postId', 'updatedAt'] as const
   $columns = ChannelPostSchema.$columns
   @column()
   declare channelId: string
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
   @column()
   declare isDeleted: boolean | null
   @column()
