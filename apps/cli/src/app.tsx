@@ -18,7 +18,7 @@ export default function App() {
 			flexDirection="column"
 			backgroundColor={theme.bg}
 		>
-			<OptionsDialog
+			{/* <OptionsDialog
 				doClose={() => {}}
 				options={[
 					{ id: "upvote", label: "Upvote" },
@@ -27,7 +27,7 @@ export default function App() {
 					{ id: "open-link", label: "Open link" },
 					{ id: "report", label: "Report" },
 				]}
-			/>
+			/> */}
 			<box flexDirection="row" width="100%" flexGrow={1}>
 				<Channels />
 				<Threads />

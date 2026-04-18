@@ -20,9 +20,7 @@ export function BarBottom() {
 		>
 			<box flexGrow={1}>
 				<text fg={theme.primary}>
-					<strong>
-						{"\u{A608}"} DIRE (^o^){"\u{4E3F}"}
-					</strong>
+					<strong>{`ꘈ DIRE (^o^)丿`}</strong>
 				</text>
 			</box>
 
