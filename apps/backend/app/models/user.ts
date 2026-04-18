@@ -8,8 +8,15 @@ import { column, hasMany } from '@adonisjs/lucid/orm'
 import Post from './post.ts'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import UserChannelPin from './user_channel_pin.ts'
+import { withManagedEmail } from '@adonisplus/persona/email'
+import { withManagedPassword } from '@adonisplus/persona/password'
 
-export default class User extends compose(UserSchema, withAuthFinder(hash)) {
+export default class User extends compose(
+  UserSchema,
+  withAuthFinder(hash),
+  withManagedEmail(),
+  withManagedPassword()
+) {
   static selfAssignPrimaryKey = true
 
   @column.dateTime({ autoCreate: true })

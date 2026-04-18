@@ -83,6 +83,38 @@ export class ChannelSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class EmailVerificationTokenSchema extends BaseModel {
+  static $columns = ['createdAt', 'email', 'expiresAt', 'hash', 'id', 'tokenableId'] as const
+  $columns = EmailVerificationTokenSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare email: string
+  @column.dateTime()
+  declare expiresAt: DateTime | null
+  @column()
+  declare hash: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare tokenableId: string
+}
+
+export class PasswordResetTokenSchema extends BaseModel {
+  static $columns = ['createdAt', 'expiresAt', 'hash', 'id', 'tokenableId'] as const
+  $columns = PasswordResetTokenSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column.dateTime()
+  declare expiresAt: DateTime | null
+  @column()
+  declare hash: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare tokenableId: string
+}
+
 export class PostSchema extends BaseModel {
   static $columns = [
     'body',
@@ -169,6 +201,7 @@ export class UserSchema extends BaseModel {
     'isDeleted',
     'isSuspended',
     'password',
+    'unverifiedEmail',
     'updatedAt',
     'username',
   ] as const
@@ -185,6 +218,8 @@ export class UserSchema extends BaseModel {
   declare isSuspended: boolean | null
   @column({ serializeAs: null })
   declare password: string
+  @column()
+  declare unverifiedEmail: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
   @column()

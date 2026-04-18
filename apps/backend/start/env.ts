@@ -36,4 +36,12 @@ export default await Env.create(new URL('../', import.meta.url), {
   REDIS_HOST: Env.schema.string({ format: 'host' }),
   REDIS_PORT: Env.schema.number(),
   REDIS_PASSWORD: Env.schema.secret.optional(),
+
+  // Mail
+  RESEND_API_KEY: Env.schema.string(),
+  FRONTEND_URL: Env.schema.string({ format: 'url', tld: false }),
+  MAIL_MAILER: Env.schema.enum(['resend'] as const),
+  MAIL_FROM_NAME: Env.schema.string(),
+  MAIL_FROM_ADDRESS: Env.schema.string({ format: 'email' }),
+  LIMITER_STORE: Env.schema.enum(['redis'] as const),
 })
