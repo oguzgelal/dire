@@ -6,7 +6,7 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').notNullable().primary()
-      table.uuid('user_id').notNullable().references('users.id').onDelete('SET NULL') // prettier-ignore
+      table.uuid('user_id').nullable().references('users.id').onDelete('SET NULL') // prettier-ignore
 
       table.string('title')
       table.string('url').nullable()
@@ -18,6 +18,9 @@ export default class extends BaseSchema {
 
       table.timestamp('created_at').notNullable().defaultTo(this.now())
       table.timestamp('updated_at').nullable().defaultTo(this.now())
+
+      table.index(['user_id'])
+      table.index(['created_at'])
     })
   }
 

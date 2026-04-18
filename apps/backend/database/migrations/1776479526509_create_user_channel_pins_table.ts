@@ -16,6 +16,7 @@ export default class extends BaseSchema {
       table.timestamp('updated_at').nullable().defaultTo(this.now())
 
       table.unique(['user_id', 'channel_id'])
+      table.index(['user_id'])
       table.index(['channel_id'])
     })
   }

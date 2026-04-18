@@ -16,6 +16,7 @@ export default class extends BaseSchema {
 
       table.unique(['channel_id', 'post_id'])
       table.index(['channel_id'])
+      table.index(['post_id'])
     })
   }
 

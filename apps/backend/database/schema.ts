@@ -82,7 +82,7 @@ export class PostSchema extends BaseModel {
   @column()
   declare url: string | null
   @column()
-  declare userId: string
+  declare userId: string | null
   @column()
   declare votes: number | null
 }
