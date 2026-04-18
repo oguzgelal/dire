@@ -8,7 +8,18 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AuthAccessTokenSchema extends BaseModel {
-  static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
+  static $columns = [
+    'abilities',
+    'createdAt',
+    'expiresAt',
+    'hash',
+    'id',
+    'lastUsedAt',
+    'name',
+    'tokenableId',
+    'type',
+    'updatedAt',
+  ] as const
   $columns = AuthAccessTokenSchema.$columns
   @column()
   declare abilities: string
@@ -33,7 +44,15 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class ChannelPostSchema extends BaseModel {
-  static $columns = ['channelId', 'createdAt', 'id', 'isDeleted', 'isPinned', 'postId', 'updatedAt'] as const
+  static $columns = [
+    'channelId',
+    'createdAt',
+    'id',
+    'isDeleted',
+    'isPinned',
+    'postId',
+    'updatedAt',
+  ] as const
   $columns = ChannelPostSchema.$columns
   @column()
   declare channelId: string
@@ -65,7 +84,18 @@ export class ChannelSchema extends BaseModel {
 }
 
 export class PostSchema extends BaseModel {
-  static $columns = ['body', 'createdAt', 'downvotes', 'id', 'title', 'updatedAt', 'upvotes', 'url', 'userId', 'votes'] as const
+  static $columns = [
+    'body',
+    'createdAt',
+    'downvotes',
+    'id',
+    'title',
+    'updatedAt',
+    'upvotes',
+    'url',
+    'userId',
+    'votes',
+  ] as const
   $columns = PostSchema.$columns
   @column()
   declare body: string | null
@@ -90,7 +120,15 @@ export class PostSchema extends BaseModel {
 }
 
 export class UserChannelPinSchema extends BaseModel {
-  static $columns = ['channelId', 'createdAt', 'id', 'nextId', 'prevId', 'updatedAt', 'userId'] as const
+  static $columns = [
+    'channelId',
+    'createdAt',
+    'id',
+    'nextId',
+    'prevId',
+    'updatedAt',
+    'userId',
+  ] as const
   $columns = UserChannelPinSchema.$columns
   @column()
   declare channelId: string
@@ -124,7 +162,16 @@ export class UserVoteSchema extends BaseModel {
 }
 
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'id', 'isDeleted', 'isSuspended', 'password', 'updatedAt', 'username'] as const
+  static $columns = [
+    'createdAt',
+    'email',
+    'id',
+    'isDeleted',
+    'isSuspended',
+    'password',
+    'updatedAt',
+    'username',
+  ] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
