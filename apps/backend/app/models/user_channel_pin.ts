@@ -1,8 +1,8 @@
-import { PostSchema } from '#database/schema'
+import { UserChannelPinSchema } from '#database/schema'
 import { column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
-export default class Post extends PostSchema {
+export default class UserChannelPin extends UserChannelPinSchema {
   static selfAssignPrimaryKey = true
 
   @column.dateTime({ autoCreate: true })

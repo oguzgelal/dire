@@ -1,18 +1,12 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'users'
+  protected tableName = 'channels'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').notNullable().primary()
-
-      table.string('username').nullable().unique()
-      table.string('email', 254).notNullable().unique()
-      table.string('password').notNullable()
-
-      table.boolean('is_deleted').defaultTo(false)
-      table.boolean('is_suspended').defaultTo(false)
+      table.string('name').notNullable().unique()
 
       table.timestamp('created_at').notNullable().defaultTo(this.now())
       table.timestamp('updated_at').nullable().defaultTo(this.now())
