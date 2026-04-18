@@ -1,10 +1,6 @@
-import {useStdout} from 'ink';
+import { useTerminalDimensions } from "@opentui/react"
 
 export function useDimensions() {
-	const {stdout} = useStdout();
-
-	const width = stdout?.columns ?? 80;
-	const height = stdout?.rows ?? 24;
-
-	return {width, height};
+	const { width, height } = useTerminalDimensions()
+	return { width, height }
 }

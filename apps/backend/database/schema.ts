@@ -8,7 +8,18 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AuthAccessTokenSchema extends BaseModel {
-  static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
+  static $columns = [
+    'abilities',
+    'createdAt',
+    'expiresAt',
+    'hash',
+    'id',
+    'lastUsedAt',
+    'name',
+    'tokenableId',
+    'type',
+    'updatedAt',
+  ] as const
   $columns = AuthAccessTokenSchema.$columns
   @column()
   declare abilities: string
@@ -25,15 +36,142 @@ export class AuthAccessTokenSchema extends BaseModel {
   @column()
   declare name: string | null
   @column()
-  declare tokenableId: number
+  declare tokenableId: string
   @column()
   declare type: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }
 
+export class ChannelPostSchema extends BaseModel {
+  static $columns = [
+    'channelId',
+    'createdAt',
+    'id',
+    'isDeleted',
+    'isPinned',
+    'postId',
+    'updatedAt',
+  ] as const
+  $columns = ChannelPostSchema.$columns
+  @column()
+  declare channelId: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare isDeleted: boolean | null
+  @column()
+  declare isPinned: boolean | null
+  @column()
+  declare postId: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class ChannelSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'name', 'updatedAt'] as const
+  $columns = ChannelSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class PostSchema extends BaseModel {
+  static $columns = [
+    'body',
+    'createdAt',
+    'downvotes',
+    'id',
+    'title',
+    'updatedAt',
+    'upvotes',
+    'url',
+    'userId',
+    'votes',
+  ] as const
+  $columns = PostSchema.$columns
+  @column()
+  declare body: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare downvotes: number | null
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare title: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare upvotes: number | null
+  @column()
+  declare url: string | null
+  @column()
+  declare userId: string | null
+  @column()
+  declare votes: number | null
+}
+
+export class UserChannelPinSchema extends BaseModel {
+  static $columns = [
+    'channelId',
+    'createdAt',
+    'id',
+    'nextId',
+    'prevId',
+    'updatedAt',
+    'userId',
+  ] as const
+  $columns = UserChannelPinSchema.$columns
+  @column()
+  declare channelId: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare nextId: string | null
+  @column()
+  declare prevId: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: string
+}
+
+export class UserVoteSchema extends BaseModel {
+  static $columns = ['createdAt', 'postId', 'updatedAt', 'userId', 'vote'] as const
+  $columns = UserVoteSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare postId: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: string
+  @column()
+  declare vote: number
+}
+
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'id', 'password', 'updatedAt', 'username'] as const
+  static $columns = [
+    'createdAt',
+    'email',
+    'id',
+    'isDeleted',
+    'isSuspended',
+    'password',
+    'updatedAt',
+    'username',
+  ] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -41,6 +179,10 @@ export class UserSchema extends BaseModel {
   declare email: string
   @column({ isPrimary: true })
   declare id: string
+  @column()
+  declare isDeleted: boolean | null
+  @column()
+  declare isSuspended: boolean | null
   @column({ serializeAs: null })
   declare password: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })

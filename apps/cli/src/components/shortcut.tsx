@@ -1,17 +1,24 @@
-import React, { type FC } from "react";
-import { Text } from "ink";
-import { theme } from "../common/theme.js";
+import { RGBA } from "@opentui/core";
+import { useTheme } from "../common/theme.js";
 
 type ShortcutProps = {
 	shortcut: string;
 	description: string;
+	shortcutFg?: string | RGBA | undefined;
+	descriptionFg?: string | RGBA | undefined;
 };
 
-export const Shortcut: FC<ShortcutProps> = ({ shortcut, description }) => {
+export function Shortcut({
+	shortcut,
+	shortcutFg,
+	description,
+	descriptionFg,
+}: ShortcutProps) {
+	const theme = useTheme();
 	return (
-		<Text>
-			<Text bold>[{shortcut}]</Text>{" "}
-			<Text color={theme.dim}>{description}</Text>
-		</Text>
+		<text fg={shortcutFg || theme.fg}>
+			<strong>[{shortcut}]</strong>{" "}
+			<span fg={descriptionFg || theme.muted}>{description}</span>
+		</text>
 	);
-};
+}

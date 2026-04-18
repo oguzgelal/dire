@@ -4,56 +4,27 @@
 	"license": "MIT",
 	"bin": "dist/cli.js",
 	"type": "module",
-	"engines": {
-		"node": ">=16"
-	},
 	"scripts": {
-		"build": "tsc",
-		"dev": "tsc --watch",
-		"test": "prettier --check . && xo && ava"
+		"start": "bun run src/cli.tsx",
+		"dev": "bun --watch run src/cli.tsx",
+		"build": "bun build src/cli.tsx --outdir=dist --target=bun",
+		"test": "bun test"
 	},
 	"files": [
 		"dist"
 	],
 	"dependencies": {
+		"@opentui/core": "^0.1.97",
+		"@opentui/react": "^0.1.97",
 		"@redux-devtools/extension": "^4.0.0",
 		"conf": "^15.1.0",
 		"figures": "^6.1.0",
 		"immer": "^11.1.4",
-		"ink": "^4.1.0",
-		"meow": "^11.0.0",
-		"react": "^18.2.0",
+		"react": "19",
 		"zustand": "^5.0.12"
 	},
 	"devDependencies": {
-		"@sindresorhus/tsconfig": "^3.0.1",
-		"@types/react": "^18.0.32",
-		"@vdemedes/prettier-config": "^2.0.1",
-		"ava": "^5.2.0",
-		"chalk": "^5.2.0",
-		"eslint-config-xo-react": "^0.27.0",
-		"eslint-plugin-react": "^7.32.2",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"ink-testing-library": "^3.0.0",
-		"prettier": "^2.8.7",
-		"ts-node": "^10.9.1",
-		"typescript": "^5.0.3",
-		"xo": "^0.53.1"
-	},
-	"ava": {
-		"extensions": {
-			"ts": "module",
-			"tsx": "module"
-		},
-		"nodeArguments": [
-			"--loader=ts-node/esm"
-		]
-	},
-	"xo": {
-		"extends": "xo-react",
-		"prettier": true,
-		"rules": {
-			"react/prop-types": "off"
-		}
+		"@types/react": "19",
+		"typescript": "^5.0.3"
 	}
 }

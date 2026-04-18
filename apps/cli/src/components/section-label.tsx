@@ -1,19 +1,18 @@
-import React, { type FC } from "react";
-import { Box, Text } from "ink";
-import { theme } from "../common/theme.js";
+import { useTheme } from "../common/theme.js"
 
 type SectionLabelProps = {
-	label: string;
-};
+	label: string
+}
 
-export const SectionLabel: FC<SectionLabelProps> = ({ label }) => {
+export function SectionLabel({ label }: SectionLabelProps) {
+	const theme = useTheme()
 	return (
-		<Box alignItems="center" marginTop={-1} marginBottom={1}>
-			<Box>
-				<Text bold color={theme.primary}>
-					{label}
-				</Text>
-			</Box>
-		</Box>
-	);
-};
+		<box alignItems="center" marginTop={-1} marginBottom={1}>
+			<box>
+				<text fg={theme.primary}>
+					<strong>{label}</strong>
+				</text>
+			</box>
+		</box>
+	)
+}

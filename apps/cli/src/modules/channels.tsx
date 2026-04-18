@@ -1,17 +1,16 @@
-import React from "react";
-import { Box, Text } from "ink";
-import { CHANNELS_WIDTH } from "../common/consts.js";
+import { CHANNELS_WIDTH, SELECTOR } from "../common/consts.js";
 import { useIsCompact } from "../hooks/useIsCompact.js";
 import {
 	useChannels,
 	useNavigation,
 	useNavigationFor,
 } from "../store/selectors.js";
-import { theme } from "../common/theme.js";
+import { useTheme } from "../common/theme.js";
 import { ScrollList } from "../components/scroll-list.js";
 import { Section } from "../components/section.js";
 
 export function Channels() {
+	const theme = useTheme();
 	const compact = useIsCompact();
 	const channels = useChannels();
 	const navigation = useNavigation();
@@ -36,24 +35,29 @@ export function Channels() {
 						const hasUnread = channel.unread > 0;
 
 						return (
-							<Box key={channel.name}>
-								<Text color={active ? theme.primary : theme.dim} bold>
-									{isSelected ? "❯ " : "  "}
-								</Text>
-								<Text
-									color={isSelected && active ? theme.primary : undefined}
-									bold={isSelected}
-									inverse={isSelected && active}
-								>
-									#{channel.name}
-								</Text>
+							<box
+								key={channel.name}
+								style={{
+									flexDirection: "row",
+									alignItems: "center",
+								}}
+							>
+								<text fg={isSelected && active ? theme.primary : theme.muted}>
+									<strong>{`${SELECTOR} `}</strong>
+								</text>
+								<text fg={isSelected && active ? theme.primary : theme.fg}>
+									{isSelected && active ? (
+										<strong>#{channel.name}</strong>
+									) : (
+										<>#{channel.name}</>
+									)}
+								</text>
 								{hasUnread && (
-									<Text color="green" bold>
-										{" "}
-										({channel.unread})
-									</Text>
+									<text fg="green">
+										<strong> ({channel.unread})</strong>
+									</text>
 								)}
-							</Box>
+							</box>
 						);
 					},
 				}))}

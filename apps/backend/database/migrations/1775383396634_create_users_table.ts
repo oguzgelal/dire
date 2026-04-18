@@ -8,9 +8,11 @@ export default class extends BaseSchema {
       table.uuid('id').notNullable().primary()
 
       table.string('username').nullable().unique()
-
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
+
+      table.boolean('is_deleted').defaultTo(false)
+      table.boolean('is_suspended').defaultTo(false)
 
       table.timestamp('created_at').notNullable().defaultTo(this.now())
       table.timestamp('updated_at').nullable().defaultTo(this.now())

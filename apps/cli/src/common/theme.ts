@@ -1,3 +1,6 @@
+import { useRenderer } from "@opentui/react";
+import { useDire } from "../store/store.js";
+
 export const colors = {
 	black: "#000",
 	white: "#fff",
@@ -267,9 +270,41 @@ export const colors = {
 	},
 };
 
-export const theme = {
+type Theme = {
+	bg: string;
+	bgOverlay: string;
+	fg: string;
+	primary: string;
+	muted: string;
+	upvote: string;
+	downvote: string;
+};
+
+const darkTheme: Theme = {
+	bg: colors.trueGray[900],
+	bgOverlay: "#00000099",
+	fg: colors.trueGray[100],
 	primary: colors.cyan[500],
-	dim: colors.trueGray[500],
+	muted: colors.trueGray[500],
 	upvote: colors.green[500],
 	downvote: colors.red[500],
 };
+
+const lightTheme: Theme = {
+	bg: colors.white,
+	bgOverlay: "#00000088",
+	fg: colors.trueGray[900],
+	primary: colors.cyan[500],
+	muted: colors.trueGray[500],
+	upvote: colors.green[500],
+	downvote: colors.red[500],
+};
+
+export function useTheme() {
+	const themeModeState = useDire((s) => s.themeMode);
+	const renderer = useRenderer();
+
+	const themeMode = themeModeState || renderer.themeMode || "dark";
+
+	return themeMode === "light" ? lightTheme : darkTheme;
+}

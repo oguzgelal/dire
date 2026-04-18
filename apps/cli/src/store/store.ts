@@ -44,7 +44,9 @@ const conf = new Conf<Record<string, StorageValue<PersistedDireState>>>({
 
 interface DireState {
 	tabs: Tab[];
+	themeMode: "light" | "dark" | null;
 	activeTabIndex: number;
+	// dialog: "options" | null;
 }
 
 interface DireStateActions {
@@ -54,6 +56,7 @@ interface DireStateActions {
 	onArrowLeft: () => void;
 	onArrowRight: () => void;
 	onEnter: () => void;
+	onT: () => void;
 }
 
 // Navigation helpers that operate on immer drafts
@@ -83,6 +86,7 @@ export const useDire = create<DireState & DireStateActions>()(
 	devtools(
 		persist(
 			(set) => ({
+				themeMode: null,
 				activeTabIndex: 0,
 				tabs: [
 					{
@@ -221,19 +225,25 @@ export const useDire = create<DireState & DireStateActions>()(
 							if (index >= 0 && index < state.tabs.length) {
 								state.activeTabIndex = index;
 							}
-						})
+						}),
 					),
 				onArrowUp: () => set(produce((state) => moveIndex(state, -1))),
 				onArrowDown: () => set(produce((state) => moveIndex(state, 1))),
 				onArrowLeft: () => set(produce((state) => switchPanel(state, "channels"))), // prettier-ignore
 				onArrowRight: () => set(produce((state) => switchPanel(state, "threads", true))), // prettier-ignore
+				onT: () =>
+					set((t) =>
+						t.themeMode === "light"
+							? { themeMode: "dark" }
+							: { themeMode: "light" },
+					),
 				onEnter: () =>
 					set(
 						produce((state) => {
 							if (activeTab(state)?.navigation.activePanel === "channels") {
 								switchPanel(state, "threads", true);
 							}
-						})
+						}),
 					),
 			}),
 			{
@@ -250,7 +260,7 @@ export const useDire = create<DireState & DireStateActions>()(
 						conf.delete(name);
 					},
 				},
-			}
-		)
-	)
+			},
+		),
+	),
 );
